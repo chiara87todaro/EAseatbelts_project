@@ -1,0 +1,54 @@
+---
+title: "Exploratory time series analysis"
+author: "Chiara Todaro"
+date: "12 April 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Motivation
+
+Time series analysis is central tool in economics, physics, process and quality control, inventory studies, and many others fields. 
+
+The starting point for a good analysis is to get a good understanding of the data by making some exploratory analyses.
+
+This simple [app](https://chiara87todaro.shinyapps.io/EA_seatbelts/), built with the R 
+package *shiny*, shows a few techniques that can be used to analyse data in R.
+
+In the next slides a brief presentation of the data set and examples of the tecniques used is given.
+
+Have fun!
+ <!-- Exploratory data analysis is a key part of the data science process because it allows you to sharpen your question and refine your modeling strategies.
+ R.Peng, Exploratory Data Analysis with R -->
+ <!--  <http://rmarkdown.rstudio.com>. -->
+
+
+## Data set
+ 
+**Seatbelts** dataset is a multivariate time series collecting monthly information 
+of serious car accidents happened in Great Britain between January 1969 and December 1984.
+
+```{r data,collapse=TRUE,results='hold'}
+Seatbelts[1:8,]
+```
+
+
+## Technique 1: moving average
+<!-- **ma()** smooths data by averaging over sliding time-windows.  -->
+<!-- It can be relaized with the function **ma()** in the R package *forecast*. -->
+<!-- Let's see what happen to a gaussian random time series. -->
+```{r ma, collapse = TRUE}
+# smooths data by averaging over sliding time-windows
+library(forecast)# x=ts object, order= length of time-window
+mov_av<-ma(x=ts(rnorm(1000)),order=50);plot(mov_av)
+```
+
+## Technique 2: cross-correlation
+
+```{r pressure}
+# cross-correlation at different lags between two ts objects
+ccf(x=ts(rnorm(1000)),y=ts(rnorm(1000)),lag.max=10,type="correlation")
+```

@@ -1,0 +1,12 @@
+name: EA_seatbelts
+title: EA_seatbelts
+username:
+account: chiara87todaro
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 862085
+bundleId: 2007951
+url: https://chiara87todaro.shinyapps.io/EA_seatbelts/
+when: 1555150795.8582
+asMultiple: FALSE
+asStatic: FALSE
